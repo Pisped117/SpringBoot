@@ -24,6 +24,12 @@ public class PathVariableController {
     private String apellido;
     @Value("${config.edad}")
     private int edad;
+    @Value("${config.arreglo}")
+    private String cadena;
+    @Value("#{${config.objetoJson}}")
+    private Map<String, Object> propiedades;
+    @Value("#{${config.objetoJson}.estatura}")
+    private double estatura;
 
 
     @GetMapping("/variable/{mensaje}")
@@ -62,7 +68,10 @@ public class PathVariableController {
         json.put("apellido", apellido);
         json.put("edad", edad);
         json.put("arreglo", arreglo);
-        return json;
+        json.put("cadena", cadena);
+        json.put("propiedades", propiedades);
+        json.put("estatura", estatura);
+        return json; 
     }
 
 }
