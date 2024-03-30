@@ -17,6 +17,12 @@
         <li th:text="${user.apellido}"></li>
         <li th:if="${user.email == null}" th:text="${user.email}"></li>
     </ul>
+    <a th:href="@{/listar}">Ver Lista</a><br><!--Directiva href de thymeleaf simple-->
+    <a th:href="@{/api/params/consultaVariable?mensaje=Andres Felipe}">Ver mensaje parametro</a><br><!--redirigiendo con href enviando variable tipo rest texto completo-->
+    <a th:href="@{'/api/params/consultaVariable2?mensaje=' + ${user.nombre}+'&codigo=1234'}">Ver mensaje parametro concatenado</a><br><!--Regirigiendo con href concatenando con varias variables-->
+    <a th:href="@{/api/params/consultaVariable2(mensaje=${titulo}, codigo=4578)}">Ver mensaje parametro concatenado directiva thm</a><br><!--Regirigiendo con href condirectiva propia concatenando con varias variables(PARA MI LA MEJOR FORMA)-->
+    <a th:href="@{'/api/path/variable/'+${titulo}}">Ver Mensaje con parametro path</a><br><!--Redirigiendo con variable path concatenada-->
+    <a th:href="@{'/api/path/variables/'+ ${titulo} +'/4578'}">Ver Mensaje con parametros path</a><!--Redirigiendo con variable path concatenada y texto plano-->
     <p>Agrego parrafo para editar desde GitHub</p>
 </body>
 </html>
